@@ -1,4 +1,4 @@
-# Bug reproduction for Goa Issue #2887
+# Bug reproduction for Goa Issue [#2887](https://github.com/goadesign/goa/issues/2887)
 
 ## Steps
 
