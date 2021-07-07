@@ -1,0 +1,93 @@
+swagger: "2.0"
+info:
+  title: ""
+  version: ""
+host: localhost:8000
+consumes:
+- application/json
+- application/xml
+- application/gob
+produces:
+- application/json
+paths:
+  /add/{a}/{b}:
+    get:
+      tags:
+      - calc
+      summary: add calc
+      operationId: calc#add
+      parameters:
+      - name: a
+        in: path
+        description: Left operand
+        required: true
+        type: integer
+      - name: b
+        in: path
+        description: Right operand
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK response.
+          schema:
+            type: integer
+            format: int64
+      schemes:
+      - http
+  /pet:
+    post:
+      tags:
+      - zoo
+      summary: petAnimal zoo
+      operationId: zoo#petAnimal
+      parameters:
+      - name: PetAnimalRequestBody
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/ZooPetAnimalRequestBody'
+          required:
+          - animal
+          - duration
+      responses:
+        "200":
+          description: OK response.
+          schema:
+            type: integer
+            format: int64
+      schemes:
+      - http
+  /swagger.json:
+    get:
+      tags:
+      - calc
+      summary: Download ./gen/http/openapi.json
+      operationId: calc#/swagger.json
+      responses:
+        "200":
+          description: File downloaded
+          schema:
+            type: file
+      schemes:
+      - http
+definitions:
+  ZooPetAnimalRequestBody:
+    title: ZooPetAnimalRequestBody
+    type: object
+    properties:
+      animal:
+        type: string
+        description: The animal to pet
+        example: Natus at nostrum facere voluptates.
+      duration:
+        type: integer
+        description: How long to pet animal
+        example: 8637372110148288513
+        format: int64
+    example:
+      animal: Quibusdam rerum sed.
+      duration: 3066346016543463408
+    required:
+    - animal
+    - duration
